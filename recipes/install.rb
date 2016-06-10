@@ -79,7 +79,7 @@ bash "unpack_dr" do
     fi
     cd #{Chef::Config.file_cache_path}
     unzip #{Chef::Config.file_cache_path}/#{basename}
-    mv #{base_zipname} #{node.drelephant.dir}
+    mv -f #{base_zipname} #{node.drelephant.dir}
     ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
     chown -R #{node.drelephant.user} #{node.drelephant.home}
     touch #{drlock}
