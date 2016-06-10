@@ -12,6 +12,7 @@ end
 
 depends 'kagent'
 depends 'scala'
+depends 'hopsworks'
 depends 'hadoop_spark'
 
 recipe  "drelephant::install", "Installs the binaries for Dr Elephant"
