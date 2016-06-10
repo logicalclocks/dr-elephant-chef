@@ -79,7 +79,7 @@ bash "unpack_dr" do
     fi
     cd #{Chef::Config.file_cache_path}
     unzip #{Chef::Config.file_cache_path}/#{basename}
-    mv #{base_zipname} #{node.drelephant.dir}
+    mv -f #{base_zipname} #{node.drelephant.dir}
     ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
     chown -R #{node.drelephant.user} #{node.drelephant.home}
     touch #{drlock}
@@ -99,7 +99,7 @@ template "#{node.drelephant.home}/conf/elephant.conf" do
   source "elephant.conf.erb"
   owner node.drelephant.user
   group node.drelephant.group
-  mode 0655
+  mode 0644
   variables({ 
         :my_url => my_url
            })
@@ -119,7 +119,7 @@ for d in tmp_dirs
     source "#{d}.erb"
     owner node.drelephant.user
     group node.drelephant.group
-    mode 0655
+    mode 0644
   end
 
 end
