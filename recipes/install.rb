@@ -60,7 +60,7 @@ basename =  File.basename(dr_url)
 base_zipname =  File.basename(basename, ".zip")
 
 remote_file "#{Chef::Config.file_cache_path}/#{basename}" do
-  checksum node.drelephant.checksum
+#  checksum node.drelephant.checksum
   source dr_url
   owner node.drelephant.user
   group node.drelephant.group
