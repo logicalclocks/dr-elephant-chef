@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2016 LinkedIn Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  use this file except in compliance with the License. You may obtain a copy of
+  the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  License for the specific language governing permissions and limitations under
+  the License.
+-->
+<!-- Heuristics configurations, each heuristic will be loaded by a particular analyser -->
+<heuristics>
+
+  <!-- MAP-REDUCE HEURISTICS -->
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper Data Skew</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperDataSkewHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpMapperDataSkew</viewname>
+    <!--<params>
+      <num_tasks_severity>10, 50, 100, 200</num_tasks_severity>
+      <deviation_severity>2, 4, 8, 16</deviation_severity>
+      <files_severity>1/8, 1/4, 1/2, 1</files_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper GC</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperGCHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpGC</viewname>
+    <!--<params>
+      <gc_ratio_severity>0.01, 0.02, 0.03, 0.04</gc_ratio_severity>
+      <runtime_severity_in_min>5, 10, 12, 15</runtime_severity_in_min>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper Time</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperTimeHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpMapperTime</viewname>
+    <!--<params>
+      <short_runtime_severity_in_min>10, 4, 2, 1</short_runtime_severity_in_min>
+      <long_runtime_severity_in_min>15, 30, 60, 120</long_runtime_severity_in_min>
+      <num_tasks_severity>50, 101, 500, 1000</num_tasks_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper Speed</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperSpeedHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpMapperSpeed</viewname>
+    <!--<params>
+      <disk_speed_severity>1/2, 1/4, 1/8, 1/32</disk_speed_severity>
+      <runtime_severity_in_min>5, 10, 15, 30</runtime_severity_in_min>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper Spill</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperSpillHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpMapperSpill</viewname>
+    <!--<params>
+      <spill_severity>2.01, 2.2, 2.5, 3</spill_severity>
+      <num_tasks_severity>50, 100, 500, 1000</num_tasks_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Mapper Memory</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.MapperMemoryHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpMapperMemory</viewname>
+    <!--<params>
+      <container_memory_severity>1, 1.5, 2, 2.5</container_memory_severity>
+      <memory_ratio_severity>0.6, 0.5, 0.4, 0.3</memory_ratio_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Reducer Data Skew</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ReducerDataSkewHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpReducerDataSkew</viewname>
+    <!--<params>
+      <num_tasks_severity>10, 50, 100, 200</num_tasks_severity>
+      <deviation_severity>2, 4, 8, 16</deviation_severity>
+      <files_severity>1/8, 1/4, 1/2, 1</files_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Reducer GC</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ReducerGCHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpGC</viewname>
+    <!--<params>
+      <gc_ratio_severity>0.01, 0.02, 0.03, 0.04</gc_ratio_severity>
+      <runtime_severity_in_min>5, 10, 12, 15</runtime_severity_in_min>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Reducer Time</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ReducerTimeHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpReducerTime</viewname>
+    <!--<params>
+      <short_runtime_severity_in_min>10, 4, 2, 1</short_runtime_severity_in_min>
+      <long_runtime_severity_in_min>15, 30, 60, 120</long_runtime_severity_in_min>
+      <num_tasks_severity>50, 101, 500, 1000</num_tasks_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Reducer Memory</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ReducerMemoryHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpReducerMemory</viewname>
+    <!--<params>
+      <container_memory_severity>1, 1.5, 2, 2.5</container_memory_severity>
+      <memory_ratio_severity>0.6, 0.5, 0.4, 0.3</memory_ratio_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Shuffle &#38; Sort</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ShuffleSortHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpShuffleSort</viewname>
+    <!--<params>
+      <runtime_severity_in_min>1, 5, 10, 30</runtime_severity_in_min>
+      <runtime_ratio_severity>1, 2, 4, 8</runtime_ratio_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>mapreduce</applicationtype>
+    <heuristicname>Exception</heuristicname>
+    <classname>com.linkedin.drelephant.mapreduce.heuristics.ExceptionHeuristic</classname>
+    <viewname>views.html.help.mapreduce.helpException</viewname>
+  </heuristic>
+
+
+  <!-- SPARK HEURISTICS -->
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Configuration Best Practice</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.BestPropertiesConventionHeuristic</classname>
+    <viewname>views.html.help.spark.helpBestProperties</viewname>
+    <!--<params>
+      <driver_memory_severity_in_gb>4, 4, 8, 8</driver_memory_severity_in_gb>
+      <num_core_severity>2</num_core_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Memory Limit</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.MemoryLimitHeuristic</classname>
+    <viewname>views.html.help.spark.helpMemoryLimit</viewname>
+    <!--<params>
+      <total_mem_severity_in_tb>0.5, 1, 1.5, 2</total_mem_severity_in_tb>
+      <mem_util_severity>0.8, 0.6, 0.4, 0.2</mem_util_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Stage Runtime</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.StageRuntimeHeuristic</classname>
+    <viewname>views.html.help.spark.helpStageRuntime</viewname>
+    <!--<params>
+      <stage_runtime_severity_in_min>15, 30, 60, 60</stage_runtime_severity_in_min>
+      <stage_failure_rate_severity>0.3, 0.3, 0.5, 0.5</stage_failure_rate_severity>
+      <single_stage_tasks_failure_rate_severity>0.0, 0.3, 0.5, 0.5</single_stage_tasks_failure_rate_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Job Runtime</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.JobRuntimeHeuristic</classname>
+    <viewname>views.html.help.spark.helpJobRuntime</viewname>
+    <!--<params>
+      <avg_job_failure_rate_severity>0.1, 0.3, 0.5, 0.5</avg_job_failure_rate_severity>
+      <single_job_failure_rate_severity>0.0, 0.3, 0.5, 0.5</single_job_failure_rate_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Executor Load Balance</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.ExecutorLoadHeuristic</classname>
+    <viewname>views.html.help.spark.helpExecutorLoad</viewname>
+    <!--<params>
+      <looser_metric_deviation_severity>0.8, 1, 1.2, 1.4</looser_metric_deviation_severity>
+      <metric_deviation_severity>0.4, 0.6, 0.8, 1.0</metric_deviation_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>spark</applicationtype>
+    <heuristicname>Spark Event Log Limit</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.EventLogLimitHeuristic</classname>
+    <viewname>views.html.help.spark.helpEventLogLimit</viewname>
+  </heuristic>
+
+
+  <!-- HOPSWORKS-YARN HEURISTICS -->
+
+  <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Configuration Best Practice</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.BestPropertiesConventionHeuristic</classname>
+    <viewname>views.html.help.spark.helpBestProperties</viewname>
+    <!--<params>
+      <driver_memory_severity_in_gb>4, 4, 8, 8</driver_memory_severity_in_gb>
+      <num_core_severity>2</num_core_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Memory Limit</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.MemoryLimitHeuristic</classname>
+    <viewname>views.html.help.spark.helpMemoryLimit</viewname>
+    <!--<params>
+      <total_mem_severity_in_tb>0.5, 1, 1.5, 2</total_mem_severity_in_tb>
+      <mem_util_severity>0.8, 0.6, 0.4, 0.2</mem_util_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Stage Runtime</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.StageRuntimeHeuristic</classname>
+    <viewname>views.html.help.spark.helpStageRuntime</viewname>
+    <!--<params>
+      <stage_runtime_severity_in_min>15, 30, 60, 60</stage_runtime_severity_in_min>
+      <stage_failure_rate_severity>0.3, 0.3, 0.5, 0.5</stage_failure_rate_severity>
+      <single_stage_tasks_failure_rate_severity>0.0, 0.3, 0.5, 0.5</single_stage_tasks_failure_rate_severity>
+    </params>-->
+  </heuristic>
+
+ <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Job Runtime</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.JobRuntimeHeuristic</classname>
+    <viewname>views.html.help.spark.helpJobRuntime</viewname>
+    <!--<params>
+      <avg_job_failure_rate_severity>0.1, 0.3, 0.5, 0.5</avg_job_failure_rate_severity>
+      <single_job_failure_rate_severity>0.0, 0.3, 0.5, 0.5</single_job_failure_rate_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Executor Load Balance</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.ExecutorLoadHeuristic</classname>
+    <viewname>views.html.help.spark.helpExecutorLoad</viewname>
+    <!--<params>
+      <looser_metric_deviation_severity>0.8, 1, 1.2, 1.4</looser_metric_deviation_severity>
+      <metric_deviation_severity>0.4, 0.6, 0.8, 1.0</metric_deviation_severity>
+    </params>-->
+  </heuristic>
+
+  <heuristic>
+    <applicationtype>HopsWorks-Yarn</applicationtype>
+    <heuristicname>Spark Event Log Limit</heuristicname>
+    <classname>com.linkedin.drelephant.spark.heuristics.EventLogLimitHeuristic</classname>
+    <viewname>views.html.help.spark.helpEventLogLimit</viewname>
+  </heuristic>
+
+
+
+
+</heuristics>

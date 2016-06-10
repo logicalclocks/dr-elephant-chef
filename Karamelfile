@@ -1,0 +1,4 @@
+dependencies: 
+  - recipe: drelephant::default
+    global:  
+      - hopsworks::default
