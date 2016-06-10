@@ -1,0 +1,16 @@
+[Unit]
+Description = Livy server
+After = syslog.target network.target remote-fs.target
+
+[Service]
+User = <%= node.livy.user %>
+
+PIDFile = /tmp/livy.pid
+ExecStart = <%= node.livy.home %>/bin/start-livy.sh
+ExecStop = <%= node.livy.home %>/bin/stop-livy.sh
+LimitNOFILE = 20000
+
+Type = forking
+
+[Install]
+WantedBy = multi-user.target
