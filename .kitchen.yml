@@ -8,27 +8,27 @@ driver:
     nictype1: "virtio"
     cpus: 1
   network:
-  - ["forwarded_port", {guest: 3306, host: 50070}]
-  - ["forwarded_port", {guest: 8080, host: 8080}]
+  #- ["forwarded_port", {guest: 3306, host: 50070}]
+  #- ["forwarded_port", {guest: 8080, host: 8080}]
   - ["forwarded_port", {guest: 11000, host: 11000}]
-  - ["forwarded_port", {guest: 8181, host: 8181}]
-  - ["forwarded_port", {guest: 9088, host: 9088}]
-  - ["forwarded_port", {guest: 4848, host: 4848}]
-  - ["forwarded_port", {guest: 50070, host: 51070}]
-  - ["forwarded_port", {guest: 50075, host: 51075}]
-  - ["forwarded_port", {guest: 9200, host: 9200}]
-  - ["forwarded_port", {guest: 9009, host: 9999}]
-  - ["forwarded_port", {guest: 22, host: 9191}]
+  #- ["forwarded_port", {guest: 8181, host: 8181}]
+  #- ["forwarded_port", {guest: 9088, host: 9088}]
+  #- ["forwarded_port", {guest: 4848, host: 4848}]
+  #- ["forwarded_port", {guest: 50070, host: 51070}]
+  #- ["forwarded_port", {guest: 50075, host: 51075}]
+  #- ["forwarded_port", {guest: 9200, host: 9200}]
+  #- ["forwarded_port", {guest: 9009, host: 9999}]
+  #- ["forwarded_port", {guest: 22, host: 9191}]
 
 provisioner:
   name: chef_solo
-#  require_chef_omnibus: 12.4.3
+  require_chef_omnibus: 12.4.3
 
 platforms:
 
 #  - name: ubuntu-15.04
-#  - name: ubuntu-14.04
-  - name: centos-7.0
+  - name: ubuntu-14.04
+#  - name: centos-7.0
 
 suites:
   - name: default
