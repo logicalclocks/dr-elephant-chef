@@ -9,7 +9,7 @@ user node.drelephant.user do
   shell "/bin/bash"
 end
 
-package "zip" do
+package "unzip" do
 end
 
 case node.platform_family

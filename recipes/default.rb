@@ -51,7 +51,7 @@ else #sysv
     group node.drelephant.group
     mode 0754
     notifies :enable, resources(:service => service_name)
-    notifies :restart, resources(:service => service_name), :immediately
+    notifies :restart, resources(:service => service_name)
   end
 
 end
