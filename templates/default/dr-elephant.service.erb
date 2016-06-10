@@ -1,13 +1,13 @@
 [Unit]
-Description = Livy server
+Description = Drelephant server
 After = syslog.target network.target remote-fs.target
 
 [Service]
-User = <%= node.livy.user %>
-
-PIDFile = /tmp/livy.pid
-ExecStart = <%= node.livy.home %>/bin/start-livy.sh
-ExecStop = <%= node.livy.home %>/bin/stop-livy.sh
+User = <%= node.drelephant.user %>
+Environment=ELEPHANT_CONF_DIR= <%= node.drelephant.home %>/conf
+PIDFile = /tmp/drelephant.pid
+ExecStart = <%= node.drelephant.home %>/bin/start.sh
+ExecStop = <%= node.drelephant.home %>/bin/stop.sh
 LimitNOFILE = 20000
 
 Type = forking

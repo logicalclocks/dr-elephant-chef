@@ -18,3 +18,5 @@ node.default.drelephant.play_base_dir       = node.drelephant.dir + "/activator-
 node.default.drelephant.play_home           = node.drelephant.dir + "/activator-dist-" + node.drelephant.play_version
 
 node.default.drelephant.db                  = "hopsworks"
+
+node.default.drelephant.systemd             = "true"

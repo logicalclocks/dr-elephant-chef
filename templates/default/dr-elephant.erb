@@ -1,28 +1,28 @@
 #!/bin/sh
 #
-# Startup script for livy
+# Startup script for drelephant
 #
 ### BEGIN INIT INFO
-# Provides:                     livy*
+# Provides:                     drelephant*
 # Required-Start:                 
 # Should-Start:                 
 # Required-Stop:                  
 # Default-Start:                2 3 4 5
 # Default-Stop:                 0 1 6
-# Short-Description:            start and stop livy-*
-# Description:                  Start/Stop/Restart livy
+# Short-Description:            start and stop drelephant-*
+# Description:                  Start/Stop/Restart drelephant
 ### END INIT INFO
 
 # Variables
 
-START_PROG="<%= node.livy.home %>/bin/start-livy.sh"  
-STOP_PROG="<%= node.livy.home %>/bin/stop-livy.sh"  
+START_PROG="<%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
+STOP_PROG="<%= node.drelephant.home %>/bin/stop.sh"  
 
 RETVAL=0
 
 ulimit -n 65000
 
-EXEC_WITH_USER="su <%= node.livy.user %> -c"
+EXEC_WITH_USER="su <%= node.drelephant.user %> -c"
 
 start() {
   $EXEC_WITH_USER "$START_PROG"
@@ -41,7 +41,7 @@ restart() {
 }
 
 status() {
-  PID_FILE=/tmp/livy.pid
+  PID_FILE=/tmp/drelephant.pid
   if [ -f $PID_FILE ] ; then
      PID=`cat $PID_FILE`
      kill -0 $PID
@@ -50,9 +50,9 @@ status() {
      res=1
   fi
   if [ $res -eq 0 ] ; then
-   echo "livy($PID) is running"
+   echo "drelephant($PID) is running"
   else
-   echo "livy is not running"
+   echo "drelephant is not running"
   fi
   return $res
 }

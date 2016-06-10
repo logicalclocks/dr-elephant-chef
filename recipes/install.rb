@@ -91,11 +91,11 @@ my_ip = my_private_ip()
 
 my_url = "#{my_ip}:#{node.ndb.mysql_port}"
 
-file "#{node.drelephant.home}/app-conf/elephant.conf" do
+file "#{node.drelephant.home}/conf/elephant.conf" do
  action :delete
 end
 
-template "#{node.drelephant.home}/app-conf/elephant.conf" do
+template "#{node.drelephant.home}/conf/elephant.conf" do
   source "elephant.conf.erb"
   owner node.drelephant.user
   group node.drelephant.group
@@ -111,11 +111,11 @@ tmp_dirs   = ["FetcherConf.xml","HeuristicConf.xml","JobTypeConf.xml","resolver.
 
 for d in tmp_dirs
 
-  file "#{node.drelephant.home}/app-conf/#{d}" do
+  file "#{node.drelephant.home}/conf/#{d}" do
     action :delete
   end
 
-  template "#{node.drelephant.home}/app-conf/#{d}" do
+  template "#{node.drelephant.home}/conf/#{d}" do
     source "#{d}.erb"
     owner node.drelephant.user
     group node.drelephant.group

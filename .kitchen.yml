@@ -10,7 +10,7 @@ driver:
   network:
   - ["forwarded_port", {guest: 3306, host: 50070}]
   - ["forwarded_port", {guest: 8080, host: 8080}]
-  - ["forwarded_port", {guest: 8088, host: 8088}]
+  - ["forwarded_port", {guest: 11000, host: 11000}]
   - ["forwarded_port", {guest: 8181, host: 8181}]
   - ["forwarded_port", {guest: 9088, host: 9088}]
   - ["forwarded_port", {guest: 4848, host: 4848}]
@@ -37,14 +37,8 @@ suites:
        - recipe[hopsworks::install]
        - recipe[ndb::install]
        - recipe[hops::install]
-       - recipe[elastic::install]
-       - recipe[zeppelin::install]
+       - recipe[drelephant::install]
        - recipe[hadoop_spark::install]
-       - recipe[flink::install]
-#       - recipe[adam::install]
-#       - recipe[kzookeeper::install]
-#       - recipe[kkafka::install]
-       - recipe[livy::install]
        - recipe[ndb::mgmd]
        - recipe[ndb::ndbd]
        - recipe[ndb::mysqld]
@@ -53,14 +47,10 @@ suites:
        - recipe[hops::dn]
        - recipe[hops::rm]
        - recipe[hops::nm]
-       - recipe[hops::jhs]
-       - recipe[elastic::default]
        - recipe[hadoop_spark::yarn]
-       - recipe[flink::yarn]
-       - recipe[livy::default]
        - recipe[hopsworks]
-       - recipe[hopsworks::dev]
-#       - recipe[adam]
+       - recipe[kagent]
+       - recipe[drelephant]
 
     attributes:
 #         download_url: "http://192.168.1.2/hops"
@@ -69,6 +59,9 @@ suites:
         #      users: ['vagrant']
         #      passwordless: true
         #      include_sudoers_d: true
+         drelephant:
+            default:
+               private_ips: ["10.0.2.15"]
          kzookeeper:
             default:
                private_ips: ["10.0.2.15"]
@@ -159,7 +152,6 @@ suites:
             taskmanager:
                private_ips: ["10.0.2.15"]
          hopsworks:
-            #port: 80
             default:
                private_ips: ["10.0.2.15"]
             private_ips: ["10.0.2.15"]
@@ -172,21 +164,4 @@ suites:
          private_ips: ["10.0.2.15"]
          public_ips: ["10.0.2.15"]
          vagrant: "true"
-         # glassfish:
-         #      version: "4.1"
-         #      package_url: "http://193.10.67.171/hops/glassfish-4.1.zip"
-         #      domains: 
-         #        domain1: 
-         #          config: 
-         #            port: 7070
-         #            admin_port: 4848
-         #            username: admin
-         #            password: admin
-         #            master_password: mykeystorepassword
-         #            remote_access: true
-         # java:
-         #     install_flavor: oracle
-         #     jdk_version: 7
-         #     oracle:       
-         #       accept_oracle_download_terms: "true"
 
