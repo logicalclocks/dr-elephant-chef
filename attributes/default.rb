@@ -1,4 +1,6 @@
 include_attribute "hopsworks"
+include_attribute "hadoop_spark"
+include_attribute "apache_hadoop"
 
 node.default.drelephant.user                = node.glassfish.user
 node.default.drelephant.group               = node.glassfish.group
@@ -20,3 +22,5 @@ node.default.drelephant.play_home           = node.drelephant.dir + "/activator-
 node.default.drelephant.db                  = "hopsworks"
 
 node.default.drelephant.systemd             = "true"
+
+node.default.drelephant.spark_log_size_limit_in_mb  = 100
