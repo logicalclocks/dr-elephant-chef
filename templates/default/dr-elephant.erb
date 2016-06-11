@@ -15,7 +15,7 @@
 
 # Variables
 
-START_PROG="<%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
+START_PROG="export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
 STOP_PROG="<%= node.drelephant.home %>/bin/stop.sh"  
 
 RETVAL=0
