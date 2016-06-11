@@ -7,7 +7,15 @@ user node.drelephant.user do
   action :create
   system true
   shell "/bin/bash"
+  not_if "getent passwd #{node.drelephant.user}"  
 end
+
+group node.drelephant.group do
+  action :modify
+  members ["#{node.drelephant.user}"]
+  append true
+end
+
 
 package "unzip" do
 end
