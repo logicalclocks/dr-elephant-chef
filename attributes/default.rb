@@ -1,4 +1,6 @@
 include_attribute "hopsworks"
+include_attribute "hadoop_spark"
+include_attribute "apache_hadoop"
 
 node.default.drelephant.user                = node.glassfish.user
 node.default.drelephant.group               = node.glassfish.group
@@ -8,8 +10,8 @@ node.default.drelephant.checksum            = ""
 node.default.drelephant.port                = "11000"
 
 node.default.drelephant.dir                 = "/srv"
-node.default.drelephant.home                = node.drelephant.dir + "/dr-elephant"
-node.default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant-" + node.drelephant.version
+node.default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant"
+node.default.drelephant.home                = node.drelephant.dir + "/dr-elephant-" + node.drelephant.version
 
 node.default.drelephant.play_version        = "1.3.10"
 node.default.drelephant.play_url            = "https://downloads.typesafe.com/typesafe-activator/#{node.drelephant.play_version}/typesafe-activator-#{node.drelephant.play_version}-minimal.zip"
@@ -20,3 +22,5 @@ node.default.drelephant.play_home           = node.drelephant.dir + "/activator-
 node.default.drelephant.db                  = "hopsworks"
 
 node.default.drelephant.systemd             = "true"
+
+node.default.drelephant.spark_log_size_limit_in_mb  = 100

@@ -9,6 +9,14 @@
 
 service_name="dr-elephant"
 
+case node.platform
+when "ubuntu"
+ if node.platform_version.to_f <= 14.04
+   node.override.drelephant.systemd = "false"
+ end
+end
+
+
 if node.drelephant.systemd == "true"
 
   service service_name do
@@ -51,7 +59,7 @@ else #sysv
     group node.drelephant.group
     mode 0754
     notifies :enable, resources(:service => service_name)
-    notifies :restart, resources(:service => service_name), :immediately
+    notifies :restart, resources(:service => service_name)
   end
 
 end
