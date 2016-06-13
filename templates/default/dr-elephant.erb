@@ -15,8 +15,8 @@
 
 # Variables
 
-START_PROG="export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
-STOP_PROG="<%= node.drelephant.home %>/bin/stop.sh"  
+START_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
+STOP_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; <%= node.drelephant.home %>/bin/stop.sh"  
 
 RETVAL=0
 

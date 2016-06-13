@@ -7,6 +7,7 @@ User = <%= node.drelephant.user %>
 Environment=ELEPHANT_CONF_DIR= <%= node.drelephant.home %>/conf
 Environment=HADOOP_HOME=<%= node.apache_hadoop.home %>
 Environment=PATH=<%= node.apache_hadoop.home %>/bin:$PATH;
+Environment=RUNNING_PID=/tmp/dr-elephant.pid;
 PIDFile = /tmp/drelephant.pid
 ExecStart = <%= node.drelephant.home %>/bin/start.sh
 ExecStop = <%= node.drelephant.home %>/bin/stop.sh
