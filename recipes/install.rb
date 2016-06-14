@@ -115,7 +115,7 @@ end
 
 
 
-tmp_dirs   = ["FetcherConf.xml","HeuristicConf.xml","JobTypeConf.xml","resolver.conf"]
+tmp_dirs   = ["FetcherConf.xml","HeuristicConf.xml","JobTypeConf.xml","resolver.conf", "log4j.properties"]
 
 for d in tmp_dirs
 
