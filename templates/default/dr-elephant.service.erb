@@ -3,6 +3,7 @@ Description = Drelephant server
 After = syslog.target network.target remote-fs.target
 
 [Service]
+WorkingDirectory =  <%= node.drelephant.home %>
 User = <%= node.drelephant.user %>
 Environment=ELEPHANT_CONF_DIR= <%= node.drelephant.home %>/conf
 Environment=HADOOP_HOME=<%= node.apache_hadoop.home %>
