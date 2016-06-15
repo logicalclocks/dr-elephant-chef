@@ -12,7 +12,6 @@ node.default.drelephant.port                = "11000"
 node.default.drelephant.dir                 = "/srv"
 node.default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant"
 node.default.drelephant.home                = node.drelephant.dir + "/dr-elephant-" + node.drelephant.version
-node.default.drelephant.log_dir             = node.default.drelephant.base_dir + "/logs/elephant"
 
 node.default.drelephant.play_version        = "1.3.10"
 node.default.drelephant.play_url            = "https://downloads.typesafe.com/typesafe-activator/#{node.drelephant.play_version}/typesafe-activator-#{node.drelephant.play_version}-minimal.zip"

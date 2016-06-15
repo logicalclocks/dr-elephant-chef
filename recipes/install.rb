@@ -42,13 +42,6 @@ remote_file "#{Chef::Config.file_cache_path}/#{basename}" do
   action :create
 end
 
-file "#{node.default.drelephant.log_dir}/dr_elephant.log" do
-   owner node.drelephant.user
-   group node.drelephant.group
-   mode '0755'
-   action :create
-end
-
 drlock = "#{Chef::Config.file_cache_path}/.dr_downloaded"
 
 bash "unpack_dr" do
