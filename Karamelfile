@@ -1,4 +1,7 @@
 dependencies: 
+  - recipe: drelephant::install
+    global:  
+      - hopsworks::install
   - recipe: drelephant::default
     global:  
       - hopsworks::default
