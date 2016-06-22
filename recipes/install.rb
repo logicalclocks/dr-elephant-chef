@@ -33,7 +33,7 @@ dr_url = node.drelephant.url
 basename =  File.basename(dr_url)
 base_zipname =  File.basename(basename, ".zip")
 
-remote_file "/tmp/binary/#{basename}" do
+remote_file "/tmp/#{basename}" do
 #  checksum node.drelephant.checksum
   source dr_url
   owner node.drelephant.user
@@ -42,7 +42,7 @@ remote_file "/tmp/binary/#{basename}" do
   action :create
 end
 
-drlock = "/tmp/binary/.dr_downloaded"
+drlock = "/tmp/.dr_downloaded"
 
 bash "unpack_dr" do
     user "root"
@@ -51,8 +51,8 @@ bash "unpack_dr" do
     if [ -L #{node.drelephant.base_dir}  ; then
        rm -rf #{node.drelephant.base_dir} 
     fi
-    cd /tmp/binary
-    unzip /tmp/binary/#{basename}
+    cd /tmp
+    unzip /tmp/#{basename}
     mv -f #{base_zipname} #{node.drelephant.dir}
     ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
     chown -R #{node.drelephant.user} #{node.drelephant.home}
