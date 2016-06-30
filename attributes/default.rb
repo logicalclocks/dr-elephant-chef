@@ -7,7 +7,7 @@ node.default.drelephant.group               = node.glassfish.group
 node.default.drelephant.version             = "2.0.3-SNAPSHOT"
 node.default.drelephant.url                 = "http://snurran.sics.se/hops/dr-elephant-#{node.drelephant.version}.zip"
 node.default.drelephant.checksum            = ""
-node.default.drelephant.port                = "11000"
+node.default.drelephant.port                = "11011"
 
 node.default.drelephant.dir                 = "/srv"
 node.default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant"
