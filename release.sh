@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cb=$(grep "^name\s*" metadata.rb | perl -p -e 's/"//g' |  perl -p -e "s/name\s*//g")
+cb=$(grep "^name\s*" metadata.rb | perl -p -e 's/"//g' | perl -p -e "s/name\s*//g")
 
 echo "Releasing cookbook: $cb to Chef supermarket"
 if [ $cb == "" ] ; then
@@ -8,6 +8,7 @@ if [ $cb == "" ] ; then
 fi
 
 rm -rf /tmp/cookbooks
+rm Berksfile.lock
 berks vendor /tmp/cookbooks
 cp metadata.rb /tmp/cookbooks/$cb/
 knife cookbook site share $cb Applications
