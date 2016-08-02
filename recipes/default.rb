@@ -67,7 +67,7 @@ end
 
 if node.kagent.enabled == "true" 
    kagent_config service_name do
-     service "ELEPHANT"
+     service service_name
      start_script "service #{service_name} start"
      stop_script "service #{service_name} stop"
      log_file "#{node.drelephant.home}/drelephant.log"
