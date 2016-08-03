@@ -1,6 +1,7 @@
 
 group node.drelephant.group do
   action :create
+  not_if "getent group #{node.drelephant.group}"
 end
 
 user node.drelephant.user do
