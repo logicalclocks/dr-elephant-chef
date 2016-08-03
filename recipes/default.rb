@@ -70,8 +70,8 @@ if node.kagent.enabled == "true"
      service service_name
      start_script "service #{service_name} start"
      stop_script "service #{service_name} stop"
-     log_file "#{node.drelephant.home}/drelephant.log"
-     pid_file "#{node.drelephant.home}/drelephant.pid"
+     log_file "#{node.drelephant.base_dir}/drelephant.log"
+     pid_file "#{node.drelephant.base_dir}/RUNNING_PID"
      web_port "#{node.drelephant.port}".to_i
    end
 end
