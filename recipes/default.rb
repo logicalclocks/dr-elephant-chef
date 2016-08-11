@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-service_name="dr-elephant"
+service_name="drelephant"
 
 case node.platform
 when "ubuntu"
@@ -66,8 +66,8 @@ end
 
 
 if node.kagent.enabled == "true" 
-   kagent_config "drelephant" do
-     service "drelephant"
+   kagent_config service_name do
+     service service_name
      start_script "service #{service_name} start"
      stop_script "service #{service_name} stop"
      log_file "#{node.drelephant.base_dir}/drelephant.log"
