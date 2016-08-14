@@ -3,15 +3,15 @@ Description = Drelephant server
 After = syslog.target network.target remote-fs.target
 
 [Service]
-WorkingDirectory =  <%= node.drelephant.home %>
+WorkingDirectory =  <%= node.drelephant.base_dir %>
 User = <%= node.drelephant.user %>
 Environment=ELEPHANT_CONF_DIR= <%= node.drelephant.home %>/conf
 Environment=HADOOP_HOME=<%= node.apache_hadoop.home %>
 Environment=PATH=<%= node.apache_hadoop.home %>/bin:$PATH;
 Environment=RUNNING_PID=/tmp/dr-elephant.pid;
-PIDFile = /tmp/drelephant.pid
-ExecStart = <%= node.drelephant.home %>/bin/start.sh
-ExecStop = <%= node.drelephant.home %>/bin/stop.sh
+PIDFile = <%= node.drelephant.base_dir %>/RUNNING_PID
+ExecStart = <%= node.drelephant.base_dir %>/bin/start.sh
+ExecStop = <%= node.drelephant.base_dir %>/bin/stop.sh
 LimitNOFILE = 20000
 
 Type = forking

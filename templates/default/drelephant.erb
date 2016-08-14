@@ -17,6 +17,7 @@
 
 START_PROG="cd  <%= node.drelephant.home %>; export RUNNING_PID=/tmp/dr-elephant.pid; export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
 STOP_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; <%= node.drelephant.home %>/bin/stop.sh"  
+PID_FILE=<%= node.drelephant.base_dir %>/RUNNING_PID
 
 RETVAL=0
 
@@ -41,7 +42,6 @@ restart() {
 }
 
 status() {
-  PID_FILE=/tmp/drelephant.pid
   if [ -f $PID_FILE ] ; then
      PID=`cat $PID_FILE`
      kill -0 $PID
