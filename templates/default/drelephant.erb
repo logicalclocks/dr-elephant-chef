@@ -18,14 +18,10 @@
 START_PROG="cd  <%= node.drelephant.home %>; export RUNNING_PID=/tmp/dr-elephant.pid; export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
 STOP_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; <%= node.drelephant.home %>/bin/stop.sh"  
 PID_FILE=<%= node.drelephant.base_dir %>/RUNNING_PID
-
-RETVAL=0
-
-ulimit -n 65000
-
 EXEC_WITH_USER="su <%= node.drelephant.user %> -c"
 
 start() {
+  ulimit -n 65000 2>&1 > /dev/null
   $EXEC_WITH_USER "$START_PROG"
   return $?
 }
@@ -42,12 +38,11 @@ restart() {
 }
 
 status() {
+  res=1
   if [ -f $PID_FILE ] ; then
      PID=`cat $PID_FILE`
      kill -0 $PID
      res=$?
-  else 
-     res=1
   fi
   if [ $res -eq 0 ] ; then
    echo "drelephant($PID) is running"
@@ -87,4 +82,4 @@ case "$1" in
   esac
 
 
-exit $RETVAL
+exit $?
