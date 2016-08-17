@@ -43,7 +43,7 @@ remote_file "/tmp/#{basename}" do
   action :create
 end
 
-drlock = "/tmp/.dr_downloaded"
+drlock = "#{node.drelephant.base_dir}/.dr_downloaded"
 
 bash "unpack_dr" do
     user "root"
