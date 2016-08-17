@@ -17,9 +17,8 @@ depends 'hadoop_spark'
 depends 'apache_hadoop'
 
 recipe  "drelephant::install", "Installs the binaries for Dr Elephant"
-
 recipe  "drelephant::default", "Starts Dr Elephant server."
-
+recipe  "drelephant::purge", "Removes and deletes Dr Elephant server."
 
 attribute "drelephant/user",
           :description => "Username that runs the Dr Elephant server",
