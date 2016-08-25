@@ -20,6 +20,14 @@ recipe  "drelephant::install", "Installs the binaries for Dr Elephant"
 recipe  "drelephant::default", "Starts Dr Elephant server."
 recipe  "drelephant::purge", "Removes and deletes Dr Elephant server."
 
+attribute "java/jdk_version",
+          :description =>  "Jdk version",
+          :type => 'string'
+
+attribute "java/install_flavor",
+          :description =>  "Oracle (default) or openjdk",
+          :type => 'string'
+
 attribute "drelephant/user",
           :description => "Username that runs the Dr Elephant server",
           :type => 'string'

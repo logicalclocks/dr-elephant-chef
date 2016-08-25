@@ -18,6 +18,9 @@ group node.drelephant.group do
 end
 
 
+include_recipe "java"
+
+
 package "unzip" do
 end
 
