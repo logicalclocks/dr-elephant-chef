@@ -30,18 +30,18 @@ when "debian"
  #   action :install
  # end
 
-  bash "install_scala" do
-    user "root"
-    code <<-EOF
-    wget www.scala-lang.org/files/archive/scala-2.11.7.deb
-    sudo dpkg -i scala-2.11.7.deb
-    EOF
-    not_if "scala -version | grep 'Scala code runner'"
-  end
+  # bash "install_scala" do
+  #   user "root"
+  #   code <<-EOF
+  #   wget www.scala-lang.org/files/archive/scala-2.11.7.deb
+  #   sudo dpkg -i scala-2.11.7.deb
+  #   EOF
+  #   not_if "scala -version | grep 'Scala code runner'"
+  # end
 
 
 when "redhat"
- include_recipe "scala"
+# include_recipe "scala"
 end
 
 dr_url = node.drelephant.url
