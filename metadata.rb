@@ -12,6 +12,7 @@ end
 
 depends 'kagent'
 depends 'scala'
+depends 'java'
 depends 'hopsworks'
 depends 'hadoop_spark'
 depends 'apache_hadoop'
