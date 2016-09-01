@@ -2,8 +2,8 @@ include_attribute "kagent"
 include_attribute "hadoop_spark"
 include_attribute "apache_hadoop"
 
-node.default.drelephant.user                = node.glassfish.user
-node.default.drelephant.group               = node.glassfish.group
+node.default.drelephant.user                = "drelephant"
+node.default.drelephant.group               = node.apache_hadoop.group
 node.default.drelephant.version             = "2.0.3-SNAPSHOT"
 node.default.drelephant.url                 = "http://snurran.sics.se/hops/dr-elephant-#{node.drelephant.version}.zip"
 node.default.drelephant.checksum            = ""
