@@ -1,5 +1,4 @@
 include_attribute "kagent"
-include_attribute "hopsworks"
 include_attribute "hadoop_spark"
 include_attribute "apache_hadoop"
 

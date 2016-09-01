@@ -4,16 +4,15 @@ maintainer_email ''
 license          'All rights reserved'
 description      'Installs/Configures drelephant'
 long_description 'Installs/Configures drelephant'
-version          '0.1.0'
+version          '0.1.1'
 
 %w{ ubuntu debian centos rhel }.each do |os|
   supports os
 end
 
 depends 'kagent'
-depends 'scala'
+#depends 'scala'
 depends 'java'
-depends 'hopsworks'
 depends 'hadoop_spark'
 depends 'apache_hadoop'
 

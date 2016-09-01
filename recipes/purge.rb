@@ -22,8 +22,6 @@
     ignore_failure true
   end
 
-
-
   directory node.drelephant.home do
     recursive true
     action :delete
