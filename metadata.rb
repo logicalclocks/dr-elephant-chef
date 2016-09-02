@@ -28,6 +28,10 @@ attribute "java/install_flavor",
           :description =>  "Oracle (default) or openjdk",
           :type => 'string'
 
+attribute "drelephant/dir",
+          :description => "Default base installation directory for the Dr Elephant server (default: /srv)",
+          :type => 'string'
+
 attribute "drelephant/user",
           :description => "Username that runs the Dr Elephant server",
           :type => 'string'
