@@ -41,7 +41,7 @@ if node.drelephant.systemd == "true"
     notifies :start, resources(:service => service_name), :immediately
   end
 
-  hadoop_spark_start "reload_#{service_name}" do
+  kagent_config "reload_#{service_name}" do
     action :systemd_reload
   end  
 
