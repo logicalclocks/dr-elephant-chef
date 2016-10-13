@@ -34,3 +34,9 @@
   end
 
 
+basename =  File.basename(node.drelephant.url)
+file "/tmp/#{basename}" do
+  action :delete
+  ignore_failure true
+end
+
