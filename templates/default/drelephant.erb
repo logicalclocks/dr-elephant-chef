@@ -15,8 +15,8 @@
 
 # Variables
 
-START_PROG="cd  <%= node.drelephant.home %>; export RUNNING_PID=/tmp/dr-elephant.pid; export HADOOP_HOME=<%= node.apache_hadoop.home %>; export PATH=<%= node.apache_hadoop.home %>/bin:$PATH; <%= node.drelephant.home %>/bin/start.sh <%= node.drelephant.home %>/conf"  
-STOP_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; <%= node.drelephant.home %>/bin/stop.sh"  
+START_PROG="cd  <%= node.drelephant.base_dir %>; export RUNNING_PID=/tmp/dr-elephant.pid; export HADOOP_HOME=<%= node.apache_hadoop.base_dir %>; export PATH=<%= node.apache_hadoop.base_dir %>/bin:$PATH; <%= node.drelephant.base_dir %>/bin/start.sh <%= node.drelephant.base_dir %>/conf"  
+STOP_PROG="export RUNNING_PID=/tmp/dr-elephant.pid; <%= node.drelephant.base_dir %>/bin/stop.sh"  
 PID_FILE=<%= node.drelephant.base_dir %>/RUNNING_PID
 EXEC_WITH_USER="su <%= node.drelephant.user %> -c"
 
@@ -51,9 +51,20 @@ restart() {
   status
   if [ $? -eq 0 ] ; then
     stop
-    sleep 3
+    sleep 5
   fi
   start
+# Sometimes need to restart dr-elepehant
+  if [ $? -ne 0 ] ; then
+    sleep 3
+    status
+    if [ $? -ne 0 ] ; then
+      stop
+      sleep 5
+      start
+    fi
+  fi
+
   return $?
 }
 
