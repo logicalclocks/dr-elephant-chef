@@ -39,3 +39,7 @@ attribute "drelephant/user",
 attribute "drelephant/port",
           :description => "Port for running the Dr Elephant server",
           :type => 'string'
+
+attribute "drelephant/default/private_ips",
+          :description => "Set ip addresses",
+          :type => "array"
