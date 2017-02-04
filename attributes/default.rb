@@ -13,9 +13,9 @@ node.default.drelephant.dir                 = "/srv"
 node.default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant"
 node.default.drelephant.home                = node.drelephant.dir + "/dr-elephant-" + node.drelephant.version
 
-node.default.drelephant.play_version        = "1.3.10"
+node.default.drelephant.play_version        = "1.3.12"
 node.default.drelephant.play_url            = "https://downloads.typesafe.com/typesafe-activator/#{node.drelephant.play_version}/typesafe-activator-#{node.drelephant.play_version}-minimal.zip"
-node.default.drelephant.play_checksum       = "15352ce253aa804f707ef8be86390ee1ee91da4b78dbb2729ab1e9cae01d8937"
+node.default.drelephant.play_checksum       = "d5037bcc2793011a03807a123035d2b3dafde32bcf0fab9112cb958a59ad9386"
 node.default.drelephant.play_base_dir       = node.drelephant.dir + "/activator-dist"
 node.default.drelephant.play_home           = node.drelephant.dir + "/activator-dist-" + node.drelephant.play_version
 
