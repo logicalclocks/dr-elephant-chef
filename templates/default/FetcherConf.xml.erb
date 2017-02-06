@@ -28,11 +28,14 @@
 <fetchers>
   <fetcher>
     <applicationtype>mapreduce</applicationtype>
-    <classname>com.linkedin.drelephant.mapreduce.MapReduceFetcherHadoop2</classname>
+    <classname>com.linkedin.drelephant.mapreduce.fetchersr.MapReduceFetcherHadoop2</classname>
+    <params>
+      <sampling_enabled>false</sampling_enabled>
+    </params>
   </fetcher>
   <fetcher>
     <applicationtype>spark</applicationtype>
-    <classname>org.apache.spark.deploy.history.SparkFSFetcher</classname>
+    <classname>com.linkedin.drelephant.spark.fetchers.SparkFetcher</classname>
     <params>
        <event_log_size_limit_in_mb><%= node.drelephant.spark_log_size_limit_in_mb %></event_log_size_limit_in_mb>
        <event_log_dir><%= node.apache_hadoop.hdfs.user_home %>/<%= node.hadoop_spark.user %>/applicationHistory</event_log_dir> 
@@ -42,7 +45,7 @@
 <!-- Fetcher for HopsWorks-Yarn jobs -->
 <fetcher>
     <applicationtype>HopsWorks-Yarn</applicationtype>
-    <classname>org.apache.spark.deploy.history.SparkFSFetcher</classname>
+    <classname>com.linkedin.drelephant.spark.fetchers.SparkFetcher</classname>
     <params>
        <event_log_size_limit_in_mb><%= node.drelephant.spark_log_size_limit_in_mb %></event_log_size_limit_in_mb>
        <event_log_dir><%= node.apache_hadoop.hdfs.user_home %>/<%= node.hadoop_spark.user %>/applicationHistory</event_log_dir>
