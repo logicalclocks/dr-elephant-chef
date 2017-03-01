@@ -14,6 +14,7 @@ depends 'kagent'
 #depends 'scala'
 depends 'java'
 depends 'hadoop_spark'
+depends 'apache_hadoop'
 
 recipe  "drelephant::install", "Installs the binaries for Dr Elephant"
 recipe  "drelephant::default", "Starts Dr Elephant server."
