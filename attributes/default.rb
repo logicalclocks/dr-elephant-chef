@@ -9,7 +9,7 @@ default.drelephant.url                 = "http://snurran.sics.se/hops/dr-elephan
 default.drelephant.checksum            = ""
 default.drelephant.port                = "11011"
 
-default.drelephant.dir                 = node.install.dir.empty? ? node.install.dir : "/srv"
+default.drelephant.dir                 = node.install.dir.empty? ? "/srv" : node.install.dir
 default.drelephant.base_dir            = node.drelephant.dir + "/dr-elephant"
 default.drelephant.home                = node.drelephant.dir + "/dr-elephant-" + node.drelephant.version
 
