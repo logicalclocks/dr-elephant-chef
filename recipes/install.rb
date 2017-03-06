@@ -5,11 +5,12 @@ group node.drelephant.group do
 end
 
 user node.drelephant.user do
-  home "/home/#{node.drelephant.user}"
+  action :create  
+  gid node.drelephant.group
+  home "/home/#{node.drelephant.user}"  
   system true
   shell "/bin/bash"
   manage_home true  
-  action :create
   not_if "getent passwd #{node.drelephant.user}"  
 end
 
