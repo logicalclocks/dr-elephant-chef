@@ -36,6 +36,10 @@ attribute "drelephant/user",
           :description => "Username that runs the Dr Elephant server",
           :type => 'string'
 
+attribute "drelephant/group",
+          :description => "group that runs the Dr Elephant server",
+          :type => 'string'
+
 attribute "drelephant/port",
           :description => "Port for running the Dr Elephant server",
           :type => 'string'
