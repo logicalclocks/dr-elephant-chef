@@ -1,8 +1,7 @@
 dependencies: 
   - recipe: drelephant::install
-    local:  
-      - hadoop_spark::install
     global:  
+      - hadoop_spark::install
       - hopsworks::install
   - recipe: drelephant::default
     global:  
