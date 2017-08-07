@@ -43,7 +43,7 @@ end
     notifies :start, resources(:service => service_name), :immediately
   end
 
-  kagent_config "reload_#{service_name}" do
+  kagent_config service_name do
     action :systemd_reload
   end  
 
