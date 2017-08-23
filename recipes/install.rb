@@ -50,8 +50,8 @@ end
 dr_url = node.drelephant.url
 basename =  File.basename(dr_url)
 base_zipname =  File.basename(basename, ".zip")
-
-remote_file "/tmp/#{basename}" do
+cached_filename = "#{Chef::Config[:file_cache_path]}/#{basename}" 
+remote_file cached_filename do
 #  checksum node.drelephant.checksum
   source dr_url
   owner node.drelephant.user
@@ -69,8 +69,8 @@ bash "unpack_dr" do
     if [ -L #{node.drelephant.base_dir}  ; then
        rm -rf #{node.drelephant.base_dir} 
     fi
-    cd /tmp
-    unzip /tmp/#{basename}
+    cd #{Chef::Config[:file_cache_path]}
+    unzip #{cached_filename}
     mv -f #{base_zipname} #{node.drelephant.dir}
     ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
     chown -R #{node.drelephant.user} #{node.drelephant.home}
@@ -97,12 +97,8 @@ template "#{node.drelephant.home}/conf/elephant.conf" do
            })
 end
 
-
-
 tmp_dirs   = ["FetcherConf.xml","HeuristicConf.xml","JobTypeConf.xml","resolver.conf", "log4j.properties"]
-
 for d in tmp_dirs
-
   file "#{node.drelephant.home}/conf/#{d}" do
     action :delete
   end
@@ -113,5 +109,4 @@ for d in tmp_dirs
     group node.drelephant.group
     mode 0644
   end
-
 end
