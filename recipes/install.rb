@@ -74,6 +74,7 @@ bash "unpack_dr" do
     mv -f #{base_zipname} #{node.drelephant.dir}
     ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
     chown -R #{node.drelephant.user} #{node.drelephant.home}
+    chown 750 #{node.drelephant.home}
     touch #{drlock}
 EOF
   not_if { ::File.exists?( drlock ) }
