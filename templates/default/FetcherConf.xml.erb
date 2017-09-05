@@ -34,8 +34,8 @@
     <applicationtype>spark</applicationtype>
     <classname>org.apache.spark.deploy.history.SparkFSFetcher</classname>
     <params>
-       <event_log_size_limit_in_mb><%= node.drelephant.spark_log_size_limit_in_mb %></event_log_size_limit_in_mb>
-       <event_log_dir><%= node.hops.hdfs.user_home %>/<%= node.hadoop_spark.user %>/applicationHistory</event_log_dir> 
+       <event_log_size_limit_in_mb><%= node['drelephant']['spark_log_size_limit_in_mb'] %></event_log_size_limit_in_mb>
+       <event_log_dir><%= node['hops']['hdfs']['user_home'] %>/<%= node['hadoop_spark']['user'] %>/applicationHistory</event_log_dir> 
     </params>
    </fetcher>
 
@@ -44,8 +44,8 @@
     <applicationtype>HopsWorks-Yarn</applicationtype>
     <classname>org.apache.spark.deploy.history.SparkFSFetcher</classname>
     <params>
-       <event_log_size_limit_in_mb><%= node.drelephant.spark_log_size_limit_in_mb %></event_log_size_limit_in_mb>
-       <event_log_dir><%= node.hops.hdfs.user_home %>/<%= node.hadoop_spark.user %>/applicationHistory</event_log_dir>
+       <event_log_size_limit_in_mb><%= node['drelephant']['spark_log_size_limit_in_mb'] %></event_log_size_limit_in_mb>
+       <event_log_dir><%= node['hops']['hdfs']['user_home'] %>/<%= node['hadoop_spark']['user'] %>/applicationHistory</event_log_dir>
     </params>  
 </fetcher>  
 </fetchers>

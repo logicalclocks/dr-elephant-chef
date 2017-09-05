@@ -9,15 +9,15 @@
 
 service_name="drelephant"
 
-case node.platform
+case node['platform']
 when "ubuntu"
- if node.platform_version.to_f <= 14.04
-   node.override.drelephant.systemd = "false"
+ if node['platform_version'].to_f <= 14.04
+   node.override['drelephant']['systemd'] = "false"
  end
 end
 
 
-if node.drelephant.systemd == "true"
+if node['drelephant']['systemd'] == "true"
 
   service service_name do
     provider Chef::Provider::Service::Systemd
@@ -25,7 +25,7 @@ if node.drelephant.systemd == "true"
     action :nothing
   end
 
-  case node.platform_family
+  case node['platform_family']
   when "rhel"
     systemd_script = "/usr/lib/systemd/system/#{service_name}.service" 
   else
@@ -37,7 +37,7 @@ if node.drelephant.systemd == "true"
     owner "root"
     group "root"
     mode 0754
-if node.services.enabled == "true"
+if node['services']['enabled'] == "true"
     notifies :enable, resources(:service => service_name)
 end
     notifies :start, resources(:service => service_name), :immediately
@@ -57,10 +57,10 @@ else #sysv
 
   template "/etc/init.d/#{service_name}" do
     source "#{service_name}.erb"
-    owner node.drelephant.user
-    group node.drelephant.group
+    owner node['drelephant']['user']
+    group node['drelephant']['group']
     mode 0754
-if node.services.enabled == "true"
+if node['services']['enabled'] == "true"
     notifies :enable, resources(:service => service_name)
 end
     notifies :restart, resources(:service => service_name)
@@ -69,11 +69,11 @@ end
 end
 
 
-if node.kagent.enabled == "true" 
+if node['kagent']['enabled'] == "true" 
    kagent_config service_name do
      service service_name
-     log_file "#{node.drelephant.base_dir}/drelephant.log"
-     web_port "#{node.drelephant.port}".to_i
+     log_file "#{node['drelephant']['base_dir']}/drelephant.log"
+     web_port "#{node['drelephant']['port']}".to_i
    end
 end
 

@@ -1,5 +1,5 @@
 # Play application server port
-port=<%= node.drelephant.port %>
+port=<%= node['drelephant']['port'] %>
 
 # Secret key
 # The secret key is used to secure cryptographics functions.
@@ -10,9 +10,9 @@ port=<%= node.drelephant.port %>
 
 # Database configuration
 db_url=<%= @my_url %>
-db_name=<%= node.drelephant.db %>
-db_user=<%= node.mysql.user %>
-db_password=<%= node.mysql.password %>
+db_name=<%= node['drelephant']['db'] %>
+db_user=<%= node['mysql']['user'] %>
+db_password=<%= node['mysql']['password'] %>
 
 # Set the keytab user and the path to the keytab file if security is enabled.
 # keytab_user=""
