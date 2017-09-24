@@ -22,19 +22,19 @@
     ignore_failure true
   end
 
-  directory node.drelephant.home do
+  directory node['drelephant']['home'] do
     recursive true
     action :delete
     ignore_failure true
   end
 
-  link node.drelephant.base_dir do
+  link node['drelephant']['base_dir'] do
     action :delete
     ignore_failure true
   end
 
 
-basename =  File.basename(node.drelephant.url)
+basename =  File.basename(node['drelephant']['url'])
 file "/tmp/#{basename}" do
   action :delete
   ignore_failure true

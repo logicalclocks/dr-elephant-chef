@@ -3,15 +3,15 @@ Description = Drelephant server
 After = syslog.target network.target remote-fs.target
 
 [Service]
-WorkingDirectory=<%= node.drelephant.base_dir %>
-User=<%= node.drelephant.user %>
-Environment="ELEPHANT_CONF_DIR=<%= node.drelephant.base_dir %>/conf"
-Environment="HADOOP_HOME=<%= node.hops.base_dir %>"
-Environment="PATH=<%= node.hops.base_dir %>/bin:${PATH}"
+WorkingDirectory=<%= node['drelephant']['base_dir'] %>
+User=<%= node['drelephant']['user'] %>
+Environment="ELEPHANT_CONF_DIR=<%= node['drelephant']['base_dir'] %>/conf"
+Environment="HADOOP_HOME=<%= node['hops']['base_dir'] %>"
+Environment="PATH=<%= node['hops']['base_dir'] %>/bin:${PATH}"
 Environment="RUNNING_PID=/tmp/dr-elephant.pid"
-PIDFile=<%= node.drelephant.base_dir %>/RUNNING_PID
-ExecStart=<%= node.drelephant.base_dir %>/bin/start.sh
-ExecStop=<%= node.drelephant.base_dir %>/bin/stop.sh
+PIDFile=<%= node['drelephant']['base_dir'] %>/RUNNING_PID
+ExecStart=<%= node['drelephant']['base_dir'] %>/bin/start.sh
+ExecStop=<%= node['drelephant']['base_dir'] %>/bin/stop.sh
 LimitNOFILE=20000
 
 Type = forking

@@ -1,22 +1,22 @@
 
-group node.drelephant.group do
+group node['drelephant']['group'] do
   action :create
-  not_if "getent group #{node.drelephant.group}"
+  not_if "getent group #{node['drelephant']['group']}"
 end
 
-user node.drelephant.user do
+user node['drelephant']['user'] do
   action :create  
-  gid node.drelephant.group
-  home "/home/#{node.drelephant.user}"  
+  gid node['drelephant']['group']
+  home "/home/#{node['drelephant']['user']}"  
   system true
   shell "/bin/bash"
   manage_home true  
-  not_if "getent passwd #{node.drelephant.user}"  
+  not_if "getent passwd #{node['drelephant']['user']}"  
 end
 
-group node.drelephant.group do
+group node['drelephant']['group'] do
   action :modify
-  members ["#{node.drelephant.user}"]
+  members ["#{node['drelephant']['user']}"]
   append true
 end
 
@@ -27,7 +27,7 @@ include_recipe "java"
 package "unzip" do
 end
 
-case node.platform_family
+case node['platform_family']
 when "debian"
  # package "scala" do
  #   action :install
@@ -47,34 +47,34 @@ when "redhat"
 # include_recipe "scala"
 end
 
-dr_url = node.drelephant.url
+dr_url = node['drelephant']['url']
 basename =  File.basename(dr_url)
 base_zipname =  File.basename(basename, ".zip")
-cached_filename = "#{Chef::Config[:file_cache_path]}/#{basename}" 
+cached_filename = "#{Chef::Config['file_cache_path']}/#{basename}" 
 remote_file cached_filename do
-#  checksum node.drelephant.checksum
+#  checksum node['drelephant']['checksum']
   source dr_url
-  owner node.drelephant.user
-  group node.drelephant.group
+  owner node['drelephant']['user']
+  group node['drelephant']['group']
   mode 0755
   action :create
 end
 
-drlock = "#{node.drelephant.base_dir}/.dr_downloaded"
+drlock = "#{node['drelephant']['base_dir']}/.dr_downloaded"
 
 bash "unpack_dr" do
     user "root"
     code <<-EOF
     set -e
-    if [ -L #{node.drelephant.base_dir}  ; then
-       rm -rf #{node.drelephant.base_dir} 
+    if [ -L #{node['drelephant']['base_dir']}  ; then
+       rm -rf #{node['drelephant']['base_dir']} 
     fi
-    cd #{Chef::Config[:file_cache_path]}
+    cd #{Chef::Config['file_cache_path']}
     unzip #{cached_filename}
-    mv -f #{base_zipname} #{node.drelephant.dir}
-    ln -s #{node.drelephant.home} #{node.drelephant.base_dir}
-    chown -R #{node.drelephant.user} #{node.drelephant.home}
-    chown 750 #{node.drelephant.home}
+    mv -f #{base_zipname} #{node['drelephant']['dir']}
+    ln -s #{node['drelephant']['home']} #{node['drelephant']['base_dir']}
+    chown -R #{node['drelephant']['user']} #{node['drelephant']['home']}
+    chown 750 #{node['drelephant']['home']}
     touch #{drlock}
 EOF
   not_if { ::File.exists?( drlock ) }
@@ -82,16 +82,16 @@ end
 
 my_ip = my_private_ip()
 
-my_url = "#{my_ip}:#{node.ndb.mysql_port}"
+my_url = "#{my_ip}:#{node['ndb']['mysql_port']}"
 
-file "#{node.drelephant.home}/conf/elephant.conf" do
+file "#{node['drelephant']['home']}/conf/elephant.conf" do
  action :delete
 end
 
-template "#{node.drelephant.home}/conf/elephant.conf" do
+template "#{node['drelephant']['home']}/conf/elephant.conf" do
   source "elephant.conf.erb"
-  owner node.drelephant.user
-  group node.drelephant.group
+  owner node['drelephant']['user']
+  group node['drelephant']['group']
   mode 0644
   variables({ 
         :my_url => my_url
@@ -100,14 +100,14 @@ end
 
 tmp_dirs   = ["FetcherConf.xml","HeuristicConf.xml","JobTypeConf.xml","resolver.conf", "log4j.properties"]
 for d in tmp_dirs
-  file "#{node.drelephant.home}/conf/#{d}" do
+  file "#{node['drelephant']['home']}/conf/#{d}" do
     action :delete
   end
 
-  template "#{node.drelephant.home}/conf/#{d}" do
+  template "#{node['drelephant']['home']}/conf/#{d}" do
     source "#{d}.erb"
-    owner node.drelephant.user
-    group node.drelephant.group
+    owner node['drelephant']['user']
+    group node['drelephant']['group']
     mode 0644
   end
 end
