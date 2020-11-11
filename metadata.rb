@@ -4,7 +4,7 @@ maintainer_email ''
 license          'All rights reserved'
 description      'Installs/Configures drelephant'
 long_description 'Installs/Configures drelephant'
-version          '2.0.0'
+version          '2.1.0'
 
 %w{ ubuntu debian centos rhel }.each do |os|
   supports os
